@@ -26,7 +26,7 @@ Our **Identity-Guided Pedestrian Generation** model obtain high-quality images w
 
 
 ## &#x1F4E3; Updates
-* [2025.02.27] 🔥 **Pose2ID** is accepted by CVPR 2025.
+* [2025.02.27] 🔥 **Pose2ID** is accepted to CVPR 2025.
 
 
 ## ⚒️ Installation
