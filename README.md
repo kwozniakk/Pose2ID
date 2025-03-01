@@ -26,7 +26,7 @@ We proposed:
 - An **I**dentity-Guided **P**edestrian **G**eneration (**IPG**) paradigm, leveraging identity features to generate high-quality images of the same identity in different poses to achieve feature centralization;
 - **N**eighbor **F**eature **C**entralization (**NFC**) based on sample’s neighborhood, discovering hidden positive samples from gallery/query set to achieve feature centralization.Rank with distances to identity center.
 
-![Image](docs/framework.png "Pose2ID Framework")
+![Image](docs/framework.jpg "Pose2ID Framework")
 
 
 
@@ -165,7 +165,8 @@ where
 `--out_dir`: directory of output images.
 
 
-
+### Official generated images on Market1501 
+Here, we provide our generated images on [Gallery](https://drive.google.com/file/d/1QdH0CctiUrZTCE3nPzc_kPmgAaxhhWzd/view?usp=sharing) and [Query](https://drive.google.com/file/d/1oiOutY64FQn9RTF2l_T0A8iPCWMkJi3a/view?usp=sharing) set of Market1501 dataset with 8 representative poses. 
 
 
 ## 📝 Release Plans
@@ -179,7 +180,7 @@ where
 
 ## 📒 Citation
 
-If you find our work useful for your research, please consider citing the paper :
+If you find our work useful for your research, please consider citing the paper:
 
 ```
 
