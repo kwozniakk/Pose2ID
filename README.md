@@ -4,32 +4,40 @@
     <a href='https://github.com/yuanc3' target='_blank'>Chao Yuan</a><sup>*</sup>&emsp;
     <a href='https://github.com/zhangguiwei610' target='_blank'>Guiwei Zhang</a><sup>*</sup>&emsp;
     <a href='https://github.com/maxiaoxsi' target='_blank'>Changxiao Ma</a><sup></sup>&emsp;
-    <a  target='_blank'>Tianyi Zhang</a><sup></sup>&emsp;
-    <a  target='_blank'>Guanglin Niu</a><sup></sup>
+    <span style="color: black;">Tianyi Zhang</span><sup></sup>&emsp;
+    <a href='https://github.com/ngl567'  target='_blank'>Guanglin Niu</a><sup></sup>
 </div>
 
 <div align='center'>
-Beihang University
+School of Computer Science and Engineering (SCSE), Beihang University
 </div>
 <br>
 <div align='center'>
-    <a href='https://'><img src='https://img.shields.io/badge/Project-Page-blue'></a>
     <a href='https://arxiv.org/'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>
 </div>
 
 
 
+![Image](docs/visualization.png "Generated Images with our IPG model")
 
-![Image](docs/visualization.png "Teaser")
 
-Our **Identity-Guided Pedestrian Generation** model obtain high-quality images with diverse poses, ensuring identity consistency even in complex scenarios such as **infrared**, and **occlusion**.
+We proposed:
+- A **Training-Free Feature Centralization framework** (**Pose2ID**) that can be directly applied to different ReID tasks, even an ImageNet pre-trained model without ReID training;
+- An **I**dentity-Guided **P**edestrian **G**eneration (**IPG**) paradigm, leveraging identity features to generate high-quality images of the same identity in different poses to achieve feature centralization;
+- **N**eighbor **F**eature **C**entralization (**NFC**) based on sample’s neighborhood, discovering hidden positive samples from gallery/query set to achieve feature centralization.Rank with distances to identity center.
+
+![Image](docs/framework.png "Pose2ID Framework")
+
+
+
 
 
 ## &#x1F4E3; Updates
-* [2025.02.27] 🔥 **Pose2ID** is accepted to CVPR 2025.
+* [2025.03.01] 🔥 Official pretrianed weight of IPG has released!
+* [2025.02.27] 🔥🔥🔥 **Pose2ID** is accepted to CVPR 2025!
 
 
-## ⚒️ Installation
+## ⚒️ Quick Start
 
 There are two parts of our project: **Identity-Guided Pedestrian Generation (IPG)** and **Neighbor Feature Centralization (NFC)**.
 
@@ -44,7 +52,6 @@ There are two parts of our project: **Identity-Guided Pedestrian Generation (IPG
     for i in range(num_poses):
         feats_ipg += reid_model(feats_pose[i]) # Any reid model
     eta = 1 # control the impact of generated images (considering the quality)
-
     # centralize features and normalize to original distribution
     feats = torch.nn.functional.normalize(feats + eta * feats_ipg, dim=1, p=2) # L2 normalization
     '''
@@ -59,7 +66,53 @@ There are two parts of our project: **Identity-Guided Pedestrian Generation (IPG
   feats = NFC(feats, k1 = 2, k2 = 2)
 ```
 
+## 📊 Experiments
 
+### ID² Metric
+We proposed a quantitative metric (ID²) for **Id**entity **D**ensity to replce visualization tools like t-SNE, which is random and only focus on few samples.
+
+It can be used in one line:
+```bash
+  from ID2 import ID2
+  density = ID2(feats, pids) # each ID's density
+  density.mean(0) # global density
+```
+where `feats` is the features extracted by ReID model and `pids` is the corresponding person IDs.
+
+
+### Improments on Person ReID tasks
+![Image](docs/experiment.png "Experiment Results") 
+
+All the experiments are conducted with the **offcial codes** and **pretrained models** given by the authors. We appreciate the official repositories for their great works:
+- TransReID
+<a href='https://github.com/damo-cv/TransReID'><img src='https://img.shields.io/badge/Code-Github-blue'></a> <a href='https://arxiv.org/pdf/2102.04378'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>
+- CLIP-ReID
+<a href='https://github.com/Syliz517/CLIP-ReID'><img src='https://img.shields.io/badge/Code-Github-blue'></a> <a href='https://arxiv.org/pdf/2211.13977'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>
+- KPR
+<a href='https://github.com/VlSomers/keypoint_promptable_reidentification'><img src='https://img.shields.io/badge/Code-Github-blue'></a> <a href='https://arxiv.org/pdf/2407.18112'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>
+- BPBReID
+<a href='https://github.com/VlSomers/bpbreid'><img src='https://img.shields.io/badge/Code-Github-blue'></a> <a href='https://arxiv.org/pdf/2211.03679'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>
+- SAAI
+<a href='https://github.com/xiaoye-hhh/SAAI'><img src='https://img.shields.io/badge/Code-Github-blue'></a> <a href='https://openaccess.thecvf.com/content/ICCV2023/papers/Fang_Visible-Infrared_Person_Re-Identification_via_Semantic_Alignment_and_Affinity_Inference_ICCV_2023_paper.pdf'><img src='https://img.shields.io/badge/Paper-ICCV-red'></a>
+- PMT 
+<a href='https://github.com/hulu88/PMT'><img src='https://img.shields.io/badge/Code-Github-blue'></a> <a href='https://arxiv.org/pdf/2212.00226'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>
+  
+### Model without ReID training
+
+TransReID loads a [ViT pre-trained model on ImageNet](https://huggingface.co/google/vit-base-patch16-224) for
+training on the ReID task. This experiment conduct on that pre-trained model which is **NOT trained on ReID task**.
+<p align="center">
+  <img src="docs/vit.png" width="50%"/>
+  <img src="docs/vit_tsne.png" width="48%"/>
+</p>
+
+### Ablation Study
+![Image](docs/ablation.png "Ablation Study")
+
+### Random Generated Images
+![Image](docs/random.png "Random Generated Images")
+
+## 🚀 IPG Installation
 
 ### Download the Codes
 
@@ -102,16 +155,17 @@ Some of the pretrained weights are from the following repositories:
 ### Inference
 Run the python inference script. It will generate with poses in the `standard_poses` for each reference image in `ref`. The output images will be saved in the `output`.
 
-
 ```bash
   python inference.py --ckpt_dir pretrained --pose_dir standard_poses --ref_dir ref --out_dir output
 ```
-
 where 
-`--ckpt_dir` is the directory of pretrained weights,\
-`--pose_dir` is the directory of target poses, \
-`--ref_dir` is the directory of reference images, \
-`--out_dir` is the directory of output images.
+`--ckpt_dir`: directory of pretrained weights,\
+`--pose_dir`: directory of target poses, \
+`--ref_dir`: directory of reference images, \
+`--out_dir`: directory of output images.
+
+
+
 
 
 ## 📝 Release Plans
@@ -119,7 +173,9 @@ where
 |  Status  | Milestone                                                                | ETA |
 |:--------:|:-------------------------------------------------------------------------|:--:|
 |    🚀    | Training codes       | TBD |
-
+|    🚀    | IPG model trained on more data       | TBD |
+|    🚀    | IPG model with modality tranfer ability (RGB2IR)      | TBD |
+|    🚀    | Video-IPG model      | TBD |
 
 ## 📒 Citation
 

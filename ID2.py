@@ -10,7 +10,11 @@ def euclidean_distance(qf, gf):
     dist_mat.addmm_(1, -2, qf, gf.t())
     return dist_mat.cpu().numpy()
 
-def IDC(feats, pid):
+'''
+A quantitative metric for Identity density to replce visualization tools 
+like t-SNE, which is random and only focus on few samples.
+'''
+def ID2(feats, pid):
     feats = F.normalize(feats , dim=1, p=2)
     pids = np.asarray(pid)
 
@@ -23,12 +27,12 @@ def IDC(feats, pid):
         x = feats[mask].mean(dim=0)
         id_center.append(x)
 
-    dist = torch.zeros(feats.size(0))
+    density = torch.zeros(feats.size(0))
     idx = 0
     for i in id_list:
         mask = pids == i
         center = id_center[idx].unsqueeze(0)
-        dist[mask] = torch.tensor(euclidean_distance(feats[mask], center)).squeeze(1)
+        density[mask] = torch.tensor(euclidean_distance(feats[mask], center)).squeeze(1)
         idx += 1
-    return dist
+    return density
     
