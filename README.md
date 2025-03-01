@@ -44,26 +44,26 @@ There are two parts of our project: **Identity-Guided Pedestrian Generation (IPG
 **IPG** using generated pedestrian images to centralize features. Using simple codes could implement:
 
 ```bash
-    '''
-    normal reid feature extraction to get 'feats'
-    '''
-    feats_ipg = torch.zeros_like(feats)
-    # fuse features of generated positive samples with different poses
-    for i in range(num_poses):
-        feats_ipg += reid_model(feats_pose[i]) # Any reid model
-    eta = 1 # control the impact of generated images (considering the quality)
-    # centralize features and normalize to original distribution
-    feats = torch.nn.functional.normalize(feats + eta * feats_ipg, dim=1, p=2) # L2 normalization
-    '''
-    compute distance matrix or post-processing like re-ranking
-    '''
+'''
+normal reid feature extraction to get 'feats'
+'''
+feats_ipg = torch.zeros_like(feats)
+# fuse features of generated positive samples with different poses
+for i in range(num_poses):
+    feats_ipg += reid_model(feats_pose[i]) # Any reid model
+eta = 1 # control the impact of generated images (considering the quality)
+# centralize features and normalize to original distribution
+feats = torch.nn.functional.normalize(feats + eta * feats_ipg, dim=1, p=2) # L2 normalization
+'''
+compute distance matrix or post-processing like re-ranking
+'''
 ```
 
 **NFC** explores each sample's potential positive samples from its neighborhood. It can also implement with few lines:
 
 ```bash
-  from NFC import NFC
-  feats = NFC(feats, k1 = 2, k2 = 2)
+from NFC import NFC
+feats = NFC(feats, k1 = 2, k2 = 2)
 ```
 
 ## 📊 Experiments
@@ -73,9 +73,9 @@ We proposed a quantitative metric (ID²) for **Id**entity **D**ensity to replce 
 
 It can be used in one line:
 ```bash
-  from ID2 import ID2
-  density = ID2(feats, pids) # each ID's density
-  density.mean(0) # global density
+from ID2 import ID2
+density = ID2(feats, pids) # each ID's density
+density.mean(0) # global density
 ```
 where `feats` is the features extracted by ReID model and `pids` is the corresponding person IDs.
 
@@ -117,21 +117,21 @@ training on the ReID task. This experiment conduct on that pre-trained model whi
 ### Download the Codes
 
 ```bash
-  git clone https://github.com/yuanc3/Pose2ID
-  cd Pose2ID/IPG
+git clone https://github.com/yuanc3/Pose2ID
+cd Pose2ID/IPG
 ```
 
 ### Python Environment Setup
 Create conda environment (Recommended):
 
 ```bash
-  conda create -n IPG python=3.9
-  conda activate IPG
+conda create -n IPG python=3.9
+conda activate IPG
 ```
 
 Install packages with `pip`
 ```bash
-  pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ### Download pretrained weights
@@ -156,7 +156,7 @@ Some of the pretrained weights are from the following repositories:
 Run the python inference script. It will generate with poses in the `standard_poses` for each reference image in `ref`. The output images will be saved in the `output`.
 
 ```bash
-  python inference.py --ckpt_dir pretrained --pose_dir standard_poses --ref_dir ref --out_dir output
+python inference.py --ckpt_dir pretrained --pose_dir standard_poses --ref_dir ref --out_dir output
 ```
 where 
 `--ckpt_dir`: directory of pretrained weights,\
