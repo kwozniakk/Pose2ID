@@ -18,7 +18,7 @@ School of Computer Science and Engineering (SCSE), Beihang University
 
 
 
-![Image](docs/visualization.png "Generated Images with our IPG model")
+![Image](figs/visualization.png "Generated Images with our IPG model")
 
 
 We proposed:
@@ -26,7 +26,7 @@ We proposed:
 - An **I**dentity-Guided **P**edestrian **G**eneration (**IPG**) paradigm, leveraging identity features to generate high-quality images of the same identity in different poses to achieve feature centralization;
 - **N**eighbor **F**eature **C**entralization (**NFC**) based on sample’s neighborhood, discovering hidden positive samples from gallery/query set to achieve feature centralization.Rank with distances to identity center.
 
-![Image](docs/framework.jpg "Pose2ID Framework")
+![Image](figs/framework.jpg "Pose2ID Framework")
 
 
 
@@ -81,7 +81,7 @@ where `feats` is the features extracted by ReID model and `pids` is the correspo
 
 
 ### Improments on Person ReID tasks
-![Image](docs/experiment.png "Experiment Results") 
+![Image](figs/experiment.png "Experiment Results") 
 
 All the experiments are conducted with the **offcial codes** and **pretrained models** given by the authors. We appreciate the official repositories for their great works:
 - TransReID
@@ -102,15 +102,15 @@ All the experiments are conducted with the **offcial codes** and **pretrained mo
 TransReID loads a [ViT pre-trained model on ImageNet](https://huggingface.co/google/vit-base-patch16-224) for
 training on the ReID task. This experiment conduct on that pre-trained model which is **NOT trained on ReID task**.
 <p align="center">
-  <img src="docs/vit.png" width="50%"/>
-  <img src="docs/vit_tsne.png" width="48%"/>
+  <img src="figs/vit.png" width="50%"/>
+  <img src="figs/vit_tsne.png" width="48%"/>
 </p>
 
 ### Ablation Study
-![Image](docs/ablation.png "Ablation Study")
+![Image](figs/ablation.png "Ablation Study")
 
 ### Random Generated Images
-![Image](docs/random.png "Random Generated Images")
+![Image](figs/random.png "Random Generated Images")
 
 ## 🚀 IPG Installation
 
