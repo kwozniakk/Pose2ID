@@ -171,7 +171,7 @@ Here, we provide our generated images on [Gallery](https://drive.google.com/file
 ### Getting target poses 
 We use [DWpose](https://github.com/IDEA-Research/DWPose) to get poses with 18 keypoints.Please follow their official instructions.
 
-```bash
+
 
 
 ## 📝 Release Plans
@@ -183,10 +183,10 @@ We use [DWpose](https://github.com/IDEA-Research/DWPose) to get poses with 18 ke
 |    🚀    | IPG model with modality tranfer ability (RGB2IR)      | TBD |
 |    🚀    | Video-IPG model      | TBD |
 
-# ## 📒 Citation
+<!-- ## 📒 Citation
 
-# If you find our work useful for your research, please consider citing the paper:
+If you find our work useful for your research, please consider citing the paper:
 
-# ```
+```bash
 
-# ```
+``` -->
