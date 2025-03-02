@@ -22,8 +22,8 @@ School of Computer Science and Engineering (SCSE), Beihang University
 
 
 We proposed:
-- A **Training-Free Feature Centralization framework** (**Pose2ID**) that can be directly applied to different ReID tasks, even an ImageNet pre-trained model without ReID training;
-- An **I**dentity-Guided **P**edestrian **G**eneration (**IPG**) paradigm, leveraging identity features to generate high-quality images of the same identity in different poses to achieve feature centralization;
+- **Training-Free Feature Centralization framework** (**Pose2ID**) that can be directly applied to different ReID tasks and models, even an ImageNet pre-trained model without ReID training;
+- **I**dentity-Guided **P**edestrian **G**eneration (**IPG**) paradigm, leveraging identity features to generate high-quality images of the same identity in different poses to achieve feature centralization;
 - **N**eighbor **F**eature **C**entralization (**NFC**) based on sample’s neighborhood, discovering hidden positive samples from gallery/query set to achieve feature centralization.Rank with distances to identity center.
 
 ![Image](figs/framework.jpg "Pose2ID Framework")
@@ -33,6 +33,7 @@ We proposed:
 
 
 ## &#x1F4E3; Updates
+<!-- * [2025.03.02] 🔥🔥🔥 Paper is available on [Arxiv]()! -->
 * [2025.03.01] 🔥 Official pretrianed weight of IPG has released!
 * [2025.02.27] 🔥🔥🔥 **Pose2ID** is accepted to CVPR 2025!
 
@@ -159,7 +160,6 @@ Run the python inference script. It will generate with poses in the `standard_po
 ```bash
 python inference.py --ckpt_dir pretrained --pose_dir standard_poses --ref_dir ref --out_dir output
 ```
-where 
 `--ckpt_dir`: directory of pretrained weights,\
 `--pose_dir`: directory of target poses, \
 `--ref_dir`: directory of reference images, \
