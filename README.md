@@ -18,7 +18,7 @@ School of Computer Science and Engineering (SCSE), Beihang University
 
 
 
-![Image](figs/visualization.png "Generated Images with our IPG model")
+![Image](figs/visualization.jpg "Generated Images with our IPG model")
 
 
 We proposed:
@@ -110,7 +110,7 @@ training on the ReID task. This experiment conduct on that pre-trained model whi
 ![Image](figs/ablation.png "Ablation Study")
 
 ### Random Generated Images
-![Image](figs/random.png "Random Generated Images")
+![Image](figs/random.jpg "Random Generated Images")
 
 ## 🚀 IPG Installation
 
