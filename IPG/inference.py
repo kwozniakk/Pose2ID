@@ -80,34 +80,6 @@ class Net(nn.Module):
         return model_pred
 
 
-def compute_snr(noise_scheduler, timesteps):
-    """
-    Computes SNR as per
-    https://github.com/TiankaiHang/Min-SNR-Diffusion-Training/blob/521b624bd70c67cee4bdf49225915f5945a872e3/guided_diffusion/gaussian_diffusion.py#L847-L849
-    """
-    alphas_cumprod = noise_scheduler.alphas_cumprod
-    sqrt_alphas_cumprod = alphas_cumprod**0.5
-    sqrt_one_minus_alphas_cumprod = (1.0 - alphas_cumprod) ** 0.5
-
-    # Expand the tensors.
-    # Adapted from https://github.com/TiankaiHang/Min-SNR-Diffusion-Training/blob/521b624bd70c67cee4bdf49225915f5945a872e3/guided_diffusion/gaussian_diffusion.py#L1026
-    sqrt_alphas_cumprod = sqrt_alphas_cumprod.to(device=timesteps.device)[
-        timesteps
-    ].float()
-    while len(sqrt_alphas_cumprod.shape) < len(timesteps.shape):
-        sqrt_alphas_cumprod = sqrt_alphas_cumprod[..., None]
-    alpha = sqrt_alphas_cumprod.expand(timesteps.shape)
-
-    sqrt_one_minus_alphas_cumprod = sqrt_one_minus_alphas_cumprod.to(
-        device=timesteps.device
-    )[timesteps].float()
-    while len(sqrt_one_minus_alphas_cumprod.shape) < len(timesteps.shape):
-        sqrt_one_minus_alphas_cumprod = sqrt_one_minus_alphas_cumprod[..., None]
-    sigma = sqrt_one_minus_alphas_cumprod.expand(timesteps.shape)
-
-    # Compute SNR.
-    snr = (alpha / sigma) ** 2
-    return snr
 class RectScale(object):
     def __init__(self, height, width, interpolation=Image.BILINEAR):
         self.height = height
@@ -118,7 +90,6 @@ class RectScale(object):
         if h == self.height and w == self.width:
             return img
         return img.resize((self.width, self.height), self.interpolation)
-normalize = transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
 
 
 def log_validation(
@@ -151,6 +122,8 @@ def log_validation(
         scheduler=scheduler,
     )
     pipe = pipe.to(accelerator.device)
+    
+    normalize = transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
     transform_reid=transforms.Compose([
                             transforms.ToPILImage(),
                             RectScale(256, 128),

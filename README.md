@@ -33,7 +33,7 @@ We proposed:
 
 
 ## &#x1F4E3; Updates
-<!-- * [2025.03.02] 🔥🔥🔥 Paper is available on [Arxiv]()! -->
+* [2025.03.03] 🔥 Paper will be available on Arxiv in few days!
 * [2025.03.01] 🔥 Official pretrianed weight of IPG has released!
 * [2025.02.27] 🔥🔥🔥 **Pose2ID** is accepted to CVPR 2025!
 
@@ -152,8 +152,6 @@ pip install -r requirements.txt
     └── transformer_20.pth
     ```
 
-
-
 ### Inference
 Run the python inference script. It will generate with poses in the `standard_poses` for each reference image in `ref`. The output images will be saved in the `output`.
 
@@ -170,6 +168,12 @@ python inference.py --ckpt_dir pretrained --pose_dir standard_poses --ref_dir re
 Here, we provide our generated images on [Gallery](https://drive.google.com/file/d/1QdH0CctiUrZTCE3nPzc_kPmgAaxhhWzd/view?usp=sharing) and [Query](https://drive.google.com/file/d/1oiOutY64FQn9RTF2l_T0A8iPCWMkJi3a/view?usp=sharing) set of Market1501 dataset with 8 representative poses. 
 
 
+### Getting target poses 
+We use [DWpose](https://github.com/IDEA-Research/DWPose) to get poses with 18 keypoints.Please follow their official instructions.
+
+```bash
+
+
 ## 📝 Release Plans
 
 |  Status  | Milestone                                                                | ETA |
@@ -179,10 +183,10 @@ Here, we provide our generated images on [Gallery](https://drive.google.com/file
 |    🚀    | IPG model with modality tranfer ability (RGB2IR)      | TBD |
 |    🚀    | Video-IPG model      | TBD |
 
-## 📒 Citation
+# ## 📒 Citation
 
-If you find our work useful for your research, please consider citing the paper:
+# If you find our work useful for your research, please consider citing the paper:
 
-```
+# ```
 
-```
+# ```
