@@ -18,7 +18,7 @@ School of Computer Science and Engineering (SCSE), Beihang University
 
 
 
-![Image](figs/visualization.jpg "Generated Images with our IPG model")
+![Image](figs/visualization.png "Generated Images with our IPG model")
 
 
 We proposed:
