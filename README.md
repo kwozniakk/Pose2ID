@@ -22,9 +22,9 @@ School of Computer Science and Engineering (SCSE), Beihang University
 
 
 We proposed:
-- **Training-Free Feature Centralization framework** (**Pose2ID**) that can be directly applied to different ReID tasks and models, even an ImageNet pre-trained model without ReID training;
-- **I**dentity-Guided **P**edestrian **G**eneration (**IPG**) paradigm, leveraging identity features to generate high-quality images of the same identity in different poses to achieve feature centralization;
-- **N**eighbor **F**eature **C**entralization (**NFC**) based on sample’s neighborhood, discovering hidden positive samples from gallery/query set to achieve feature centralization.Rank with distances to identity center.
+- _**Training-Free Feature Centralization framework (Pose2ID)**_ that can be directly applied to different ReID tasks and models, even an ImageNet pre-trained model without ReID training;
+- _**I**dentity-Guided **P**edestrian **G**eneration (**IPG**)_ paradigm, leveraging identity features to generate high-quality images of the same identity in different poses to achieve feature centralization;
+- _**N**eighbor **F**eature **C**entralization (**NFC**)_ based on sample’s neighborhood, discovering hidden positive samples from gallery/query set to achieve feature centralization.Rank with distances to identity center.
 
 ![Image](figs/framework.jpg "Pose2ID Framework")
 
@@ -35,7 +35,7 @@ We proposed:
 ## &#x1F4E3; Updates
 * [2025.03.03] 🔥 Paper will be available on Arxiv in few days!
 * [2025.03.01] 🔥 Official pretrianed weight of IPG has released!
-* [2025.02.27] 🔥🔥🔥 **Pose2ID** is accepted to CVPR 2025!
+* [2025.02.27] 🔥🔥🔥 This work **Pose2ID** is accepted to CVPR 2025!
 
 
 ## ⚒️ Quick Start
@@ -46,7 +46,7 @@ There are two parts of our project: **Identity-Guided Pedestrian Generation (IPG
 
 ```bash
 '''
-normal reid feature extraction to get 'feats'
+normal reid feature extraction to get feats
 '''
 feats_ipg = torch.zeros_like(feats)
 # fuse features of generated positive samples with different poses
