@@ -31,10 +31,8 @@ noise_scheduler_kwargs:
   steps_offset:        1
   clip_sample:         false
 
-# base_model_path: '../stable-diffusion-v1-5'
-# vae_model_path: '../sd-vae-ft-mse'
-base_model_path: '/home/yuanchao/.cache/huggingface/hub/models--runwayml--stable-diffusion-v1-5/snapshots/1d0c4ebf6ff58a5caecab40fa1406526bca4b5b9'
-vae_model_path: '/home/yuanchao/.cache/huggingface/hub/sd-vae-ft-mse/snapshots/31f26fdeee1355a5c34592e401dd41e45d25a493'
+base_model_path: '../stable-diffusion-v1-5'
+vae_model_path: '../sd-vae-ft-mse'
 
 weight_dtype: 'fp16'  # [fp16, fp32]
 uncond_ratio: 0.1

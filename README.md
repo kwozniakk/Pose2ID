@@ -4,7 +4,7 @@
     <a href='https://github.com/yuanc3' target='_blank'>Chao Yuan</a><sup>*</sup>&emsp;
     <a href='https://github.com/zhangguiwei610' target='_blank'>Guiwei Zhang</a><sup>*</sup>&emsp;
     <a href='https://github.com/maxiaoxsi' target='_blank'>Changxiao Ma</a><sup></sup>&emsp;
-    <span style="color: black;">Tianyi Zhang</span><sup></sup>&emsp;
+    <span >Tianyi Zhang</span><sup></sup>&emsp;
     <a href='https://github.com/ngl567'  target='_blank'>Guanglin Niu</a><sup></sup>
 </div>
 
@@ -80,7 +80,7 @@ density.mean(0) # global density
 where `feats` is the features extracted by ReID model and `pids` is the corresponding person IDs.
 
 
-### Improments on Person ReID tasks
+### Improvements on Person ReID tasks
 ![Image](figs/experiment.png "Experiment Results") 
 
 All the experiments are conducted with the **offcial codes** and **pretrained models** given by the authors. We appreciate the official repositories for their great works:
@@ -135,22 +135,23 @@ pip install -r requirements.txt
 ```
 
 ### Download pretrained weights
-Download our model weights from [Google Drive](https://drive.google.com/drive/folders/1q5MNFMB1FV74Xy2vPo43k3tbOthQijDS?usp=sharing) and put them in the `pretrained` directory.
+1. Download official models from: 
+    - [sd-vae-ft-mse](https://huggingface.co/stabilityai/sd-vae-ft-mse)
+    - [stable-diffusion-v1-5](https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5)
+1. Download our IPG pretrained weights from [Google Drive](https://drive.google.com/drive/folders/1q5MNFMB1FV74Xy2vPo43k3tbOthQijDS?usp=sharing) and put them in the `pretrained` directory.
 
-The **pretrained** are organized as follows.
+    The **pretrained** are organized as follows.
 
-```
-./pretrained/
-├── denoising_unet.pth
-├── reference_unet.pth
-├── IFR.pth
-├── pose_guider.pth
-└── transformer_20.pth
-```
+    ```
+    ./pretrained/
+    ├── denoising_unet.pth
+    ├── reference_unet.pth
+    ├── IFR.pth
+    ├── pose_guider.pth
+    └── transformer_20.pth
+    ```
 
-Some of the pretrained weights are from the following repositories:
-- [sd-vae-ft-mse](https://huggingface.co/stabilityai/sd-vae-ft-mse)
-- [stable-diffusion-v1-5](https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5)
+
 
 ### Inference
 Run the python inference script. It will generate with poses in the `standard_poses` for each reference image in `ref`. The output images will be saved in the `output`.
