@@ -9,12 +9,12 @@
 </div>
 
 <div align='center'>
-School of Computer Science and Engineering (SCSE), Beihang University
+Beihang University
 </div>
 <br>
-<div align='center'>
+<!-- <div align='center'>
     <a href='https://arxiv.org/'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>
-</div>
+</div> -->
 
 
 
@@ -34,7 +34,7 @@ We proposed:
 
 ## &#x1F4E3; Updates
 * [2025.03.03] 🔥 Paper will be available on Arxiv in few days!
-* [2025.03.01] 🔥 Official pretrianed weight of IPG has released!
+* [2025.03.03] 🔥 Official codes has released!
 * [2025.02.27] 🔥🔥🔥 This work **Pose2ID** is accepted to CVPR 2025!
 
 
