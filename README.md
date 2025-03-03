@@ -84,7 +84,7 @@ where `feats` is the features extracted by ReID model and `pids` is the correspo
 ### Improvements on Person ReID tasks
 ![Image](figs/experiment.png "Experiment Results") 
 
-All the experiments are conducted with the **offcial codes** and **pretrained models** given by the authors. We appreciate the official repositories for their great works:
+All the experiments are conducted with the **offcial codes** and **pretrained models**. We appreciate their official repositories for their great works:
 - TransReID
 <a href='https://github.com/damo-cv/TransReID'><img src='https://img.shields.io/badge/Code-Github-blue'></a> <a href='https://arxiv.org/pdf/2102.04378'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>
 - CLIP-ReID
@@ -107,7 +107,7 @@ training on the ReID task. This experiment conduct on that pre-trained model whi
   <img src="figs/vit_tsne.png" width="48%"/>
 </p>
 
-### Ablation Study
+### Ablation Studies
 ![Image](figs/ablation.png "Ablation Study")
 
 ### Random Generated Images
@@ -153,19 +153,19 @@ pip install -r requirements.txt
     ```
 
 ### Inference
-Run the python inference script. It will generate with poses in the `standard_poses` for each reference image in `ref`. The output images will be saved in the `output`.
+Run the `inference.py` script. It will generate with poses in the `standard_poses` for each reference image in `ref`. The output images will be saved in the `output`.
 
 ```bash
 python inference.py --ckpt_dir pretrained --pose_dir standard_poses --ref_dir ref --out_dir output
 ```
 `--ckpt_dir`: directory of pretrained weights,\
-`--pose_dir`: directory of target poses, \
-`--ref_dir`: directory of reference images, \
+`--pose_dir`: directory of target poses (we provide 8 poses used in our experiment), \
+`--ref_dir`: directory of reference images (we provide 10 reference imgs), \
 `--out_dir`: directory of output images.
 
 
 ### Official generated images on Market1501 
-Here, we provide our generated images on [Gallery](https://drive.google.com/file/d/1QdH0CctiUrZTCE3nPzc_kPmgAaxhhWzd/view?usp=sharing) and [Query](https://drive.google.com/file/d/1oiOutY64FQn9RTF2l_T0A8iPCWMkJi3a/view?usp=sharing) set of Market1501 dataset with 8 representative poses. 
+Here, we provide our generated images on [Gallery](https://drive.google.com/file/d/1QdH0CctiUrZTCE3nPzc_kPmgAaxhhWzd/view?usp=sharing) and [Query](https://drive.google.com/file/d/1oiOutY64FQn9RTF2l_T0A8iPCWMkJi3a/view?usp=sharing) of test set on Market1501 with our 8 representative poses. 
 
 
 ### Getting target poses 

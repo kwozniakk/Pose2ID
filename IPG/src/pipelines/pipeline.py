@@ -204,7 +204,6 @@ class Pose2ImagePipeline(DiffusionPipeline):
         return_dict: bool = True,
         callback: Optional[Callable[[int, int, torch.FloatTensor], None]] = None,
         callback_steps: Optional[int] = 1,
-        ref_img_feat = None,
         batch_size = 1,
         **kwargs,
     ):
@@ -222,8 +221,7 @@ class Pose2ImagePipeline(DiffusionPipeline):
         self.scheduler.set_timesteps(num_inference_steps, device=device)
         timesteps = self.scheduler.timesteps
 
-        clip_image_embeds=reid_input.to(device, dtype=self.vae.dtype)
-        image_prompt_embeds=clip_image_embeds
+        reid_embeds=reid_input.to(device, dtype=self.vae.dtype)
 
         reference_control_writer = ReferenceAttentionControl(
             self.reference_unet,
@@ -246,14 +244,12 @@ class Pose2ImagePipeline(DiffusionPipeline):
             num_channels_latents,
             width,
             height,
-            clip_image_embeds.dtype,
+            reid_embeds.dtype,
             device,
             generator,
         )
 
         latents = latents.unsqueeze(2)  # (bs, c, 1, h', w')
-
-        latents_dtype = latents.dtype
 
         # Prepare extra step kwargs.
         extra_step_kwargs = self.prepare_extra_step_kwargs(generator, eta)
@@ -293,7 +289,7 @@ class Pose2ImagePipeline(DiffusionPipeline):
                         (2 if do_classifier_free_guidance else 1), 1, 1, 1
                     ),
                     torch.zeros_like(t),
-                    encoder_hidden_states=image_prompt_embeds,
+                    encoder_hidden_states=reid_embeds,
                     return_dict=False,
                 )
 
@@ -314,7 +310,7 @@ class Pose2ImagePipeline(DiffusionPipeline):
             noise_pred = self.denoising_unet(
                 latent_model_input,
                 t,
-                encoder_hidden_states=image_prompt_embeds,
+                encoder_hidden_states=reid_embeds,
                 pose_cond_fea=pose_fea,
                 return_dict=False,
             )[0]

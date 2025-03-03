@@ -1,7 +1,6 @@
 import argparse
 import os
 import warnings
-from datetime import datetime
 import numpy as np
 import torch
 import torch.nn as nn
@@ -22,6 +21,8 @@ from src.pipelines.pipeline import Pose2ImagePipeline
 from src.utils.util import import_filename, seed_everything
 from einops import rearrange
 import cv2
+import pickle
+
 warnings.filterwarnings("ignore")
 from torch.autograd import Variable
 # Will error if the minimal version of diffusers is not installed. Remove at your own risks.
@@ -76,7 +77,6 @@ class Net(nn.Module):
             pose_cond_fea=pose_fea,
             encoder_hidden_states=feature_embeds,
         ).sample
-
         return model_pred
 
 
@@ -102,7 +102,6 @@ def log_validation(
     height,
     generator,
 ):
-
     ori_net = accelerator.unwrap_model(net)
     reference_unet = ori_net.reference_unet
     denoising_unet = ori_net.denoising_unet
@@ -111,7 +110,6 @@ def log_validation(
     
     # cast unet dtype
     vae = vae.to(dtype=torch.float32)
-
 
     # pose_detector = DWposeDetector()
     pipe = Pose2ImagePipeline(
@@ -220,9 +218,8 @@ class IFR(nn.Module):
         encoder_hidden_states = self.proj_motion(encoder_hidden_states)
         encoder_hidden_states = rearrange(encoder_hidden_states, 'b (n d) -> b n d', n=self.num)
         encoder_hidden_states = self.norm_motion(encoder_hidden_states)
-
         return encoder_hidden_states
-import pickle
+    
 def main(cfg):
     kwargs = DistributedDataParallelKwargs(find_unused_parameters=True)
     accelerator = Accelerator(
@@ -233,7 +230,6 @@ def main(cfg):
         kwargs_handlers=[kwargs],
     )
 
-    
     # If passed along, set the training seed now.
     if cfg.seed is not None:
         seed_everything(cfg.seed)
@@ -256,7 +252,6 @@ def main(cfg):
         )
     val_noise_scheduler = DDIMScheduler(**sched_kwargs)
     sched_kwargs.update({"beta_schedule": "scaled_linear"})
-    # train_noise_scheduler = DDIMScheduler(**sched_kwargs)
     vae = AutoencoderKL.from_pretrained(cfg.vae_model_path).to(
         "cuda", dtype=weight_dtype
     )
@@ -349,14 +344,6 @@ def main(cfg):
         reference_unet.enable_gradient_checkpointing()
         denoising_unet.enable_gradient_checkpointing()
 
-    # We need to initialize the trackers we use, and also store our configuration.
-    # The trackers initializes automatically on the main process.
-    # if accelerator.is_main_process:
-    #     run_time = datetime.now().strftime("%Y%m%d-%H%M")
-    #     accelerator.init_trackers(
-    #         cfg.exp_name,
-    #         init_kwargs={"mlflow": {"run_name": run_time}},
-    #     )
 
     generator = torch.Generator(device=accelerator.device)
     generator.manual_seed(cfg.seed)
