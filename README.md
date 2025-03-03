@@ -4,7 +4,7 @@
     <a href='https://github.com/yuanc3' target='_blank'>Chao Yuan</a><sup>*</sup>&emsp;
     <a href='https://github.com/zhangguiwei610' target='_blank'>Guiwei Zhang</a><sup>*</sup>&emsp;
     <a href='https://github.com/maxiaoxsi' target='_blank'>Changxiao Ma</a><sup></sup>&emsp;
-    <span >Tianyi Zhang</span><sup></sup>&emsp;
+    <a href='https://github.com/sapphire22' target='_blank'>Tianyi Zhang</a><sup></sup>&emsp;
     <a href='https://github.com/ngl567'  target='_blank'>Guanglin Niu</a><sup></sup>
 </div>
 
