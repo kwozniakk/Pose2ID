@@ -35,7 +35,7 @@ We proposed:
 ## &#x1F4E3; Updates
 * [2025.03.03] 🔥 Paper will be available on Arxiv in few days!
 * [2025.03.03] 🔥 Official codes has released!
-* [2025.02.27] 🔥🔥🔥 This work **Pose2ID** is accepted to CVPR 2025!
+* [2025.02.27] 🔥🔥🔥 **Pose2ID** is accepted to CVPR 2025!
 
 
 ## ⚒️ Quick Start
@@ -180,7 +180,7 @@ We use [DWpose](https://github.com/IDEA-Research/DWPose) to get poses with 18 ke
 |:--------:|:-------------------------------------------------------------------------|:--:|
 |    🚀    | Training codes       | TBD |
 |    🚀    | IPG model trained on more data       | TBD |
-|    🚀    | IPG model with modality tranfer ability (RGB2IR)      | TBD |
+|    🚀    | IPG model with modality transfer ability (RGB2IR)      | TBD |
 |    🚀    | Video-IPG model      | TBD |
 
 <!-- ## 📒 Citation
