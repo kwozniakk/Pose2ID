@@ -24,7 +24,7 @@ Beihang University
 We proposed:
 - _**Training-Free Feature Centralization framework (Pose2ID)**_ that can be directly applied to different ReID tasks and models, even an ImageNet pre-trained model without ReID training;
 - _**I**dentity-Guided **P**edestrian **G**eneration (**IPG**)_ paradigm, leveraging identity features to generate high-quality images of the same identity in different poses to achieve feature centralization;
-- _**N**eighbor **F**eature **C**entralization (**NFC**)_ based on sample’s neighborhood, discovering hidden positive samples from gallery/query set to achieve feature centralization.Rank with distances to identity center.
+- _**N**eighbor **F**eature **C**entralization (**NFC**)_ based on sample’s neighborhood, discovering hidden positive samples of gallery/query set to achieve feature centralization.
 
 ![Image](figs/framework.jpg "Pose2ID Framework")
 
