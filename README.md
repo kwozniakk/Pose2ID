@@ -12,9 +12,16 @@
 Beihang University
 </div>
 <br>
-<!-- <div align='center'>
-    <a href='https://arxiv.org/'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>
-</div> -->
+
+
+<div align='center'>
+    <a href='https://arxiv.org/abs/2503.00938'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>
+</div>
+
+
+<p align="center"><i>🔥 A very <b>simple</b> but <b>efficient</b> framework for <b>ReID</b> tasks/models. 🔥</i></p>
+
+
 
 
 
@@ -24,7 +31,7 @@ Beihang University
 We proposed:
 - _**Training-Free Feature Centralization framework (Pose2ID)**_ that can be directly applied to different ReID tasks and models, even an ImageNet pre-trained model without ReID training;
 - _**I**dentity-Guided **P**edestrian **G**eneration (**IPG**)_ paradigm, leveraging identity features to generate high-quality images of the same identity in different poses to achieve feature centralization;
-- _**N**eighbor **F**eature **C**entralization (**NFC**)_ based on sample’s neighborhood, discovering hidden positive samples from gallery/query set to achieve feature centralization.Rank with distances to identity center.
+- _**N**eighbor **F**eature **C**entralization (**NFC**)_ based on sample's neighborhood, discovering hidden positive samples from gallery/query set to achieve feature centralization.
 
 ![Image](figs/framework.jpg "Pose2ID Framework")
 
@@ -33,7 +40,7 @@ We proposed:
 
 
 ## &#x1F4E3; Updates
-* [2025.03.03] 🔥 Paper will be available on Arxiv in few days!
+* [2025.03.04] 🔥 Paper is available on [Arxiv](https://arxiv.org/abs/2503.00938)!
 * [2025.03.03] 🔥 Official codes has released!
 * [2025.02.27] 🔥🔥🔥 **Pose2ID** is accepted to CVPR 2025!
 
@@ -84,7 +91,7 @@ where `feats` is the features extracted by ReID model and `pids` is the correspo
 ### Improvements on Person ReID tasks
 ![Image](figs/experiment.png "Experiment Results") 
 
-All the experiments are conducted with the **offcial codes** and **pretrained models**. We appreciate their official repositories for their great works:
+All the experiments are conducted with the **offcial codes** and **pretrained models**. We appreciate their official repositories and great works:
 - TransReID
 <a href='https://github.com/damo-cv/TransReID'><img src='https://img.shields.io/badge/Code-Github-blue'></a> <a href='https://arxiv.org/pdf/2102.04378'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>
 - CLIP-ReID
