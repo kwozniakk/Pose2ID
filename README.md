@@ -16,11 +16,11 @@ Beihang University
 
 <div align='center'>
     <a href='https://arxiv.org/abs/2503.00938'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>
+    <a href='https://huggingface.co/yuanc3/Pose2ID'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20HuggingFace-Model-yellow'></a>
 </div>
 
 
 <p align="center"><i>🔥 A very <b>simple</b> but <b>efficient</b> framework for <b>ReID</b> tasks/models. 🔥</i></p>
-
 
 
 
@@ -40,6 +40,7 @@ We proposed:
 
 
 ## &#x1F4E3; Updates
+* [2025.03.04] 🔥 Pretrained weights is available on [HuggingFace](https://huggingface.co/yuanc3/Pose2ID)!
 * [2025.03.04] 🔥 Paper is available on [Arxiv](https://arxiv.org/abs/2503.00938)!
 * [2025.03.03] 🔥 Official codes has released!
 * [2025.02.27] 🔥🔥🔥 **Pose2ID** is accepted to CVPR 2025!
@@ -146,7 +147,13 @@ pip install -r requirements.txt
 1. Download official models from: 
     - [sd-vae-ft-mse](https://huggingface.co/stabilityai/sd-vae-ft-mse)
     - [stable-diffusion-v1-5](https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5)
-1. Download our IPG pretrained weights from [Google Drive](https://drive.google.com/drive/folders/1q5MNFMB1FV74Xy2vPo43k3tbOthQijDS?usp=sharing) and put them in the `pretrained` directory.
+
+2. Download our IPG pretrained weights from [HuggingFace](https://huggingface.co/yuanc3/Pose2ID) or [Google Drive](https://drive.google.com/drive/folders/1q5MNFMB1FV74Xy2vPo43k3tbOthQijDS?usp=sharing),  and put them in the `pretrained` directory.
+
+    ```shell
+    git lfs install
+    git clone https://huggingface.co/yuanc3/Pose2ID pretrained
+    ```
 
     The **pretrained** are organized as follows.
 
