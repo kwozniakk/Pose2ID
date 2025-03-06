@@ -40,7 +40,7 @@ We proposed:
 
 
 ## &#x1F4E3; Updates
-* [2025.03.04] 🔥 Pretrained weights is available on [HuggingFace](https://huggingface.co/yuanc3/Pose2ID)!
+* [2025.03.06] 🔥 Pretrained weights is available on [HuggingFace](https://huggingface.co/yuanc3/Pose2ID)!
 * [2025.03.04] 🔥 Paper is available on [Arxiv](https://arxiv.org/abs/2503.00938)!
 * [2025.03.03] 🔥 Official codes has released!
 * [2025.02.27] 🔥🔥🔥 **Pose2ID** is accepted to CVPR 2025!
