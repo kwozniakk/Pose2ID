@@ -1,4 +1,4 @@
-from model.vision_transformer import ViT
+from reidmodel.vision_transformer import ViT
 import torch
 import torch.nn as nn
 
