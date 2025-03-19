@@ -40,6 +40,7 @@ We proposed:
 
 
 ## &#x1F4E3; Updates
+* [2025.03.19] 🔥 A demo of TransReID on Market1501 is available!
 * [2025.03.06] 🔥 Pretrained weights is available on [HuggingFace](https://huggingface.co/yuanc3/Pose2ID)!
 * [2025.03.04] 🔥 Paper is available on [Arxiv](https://arxiv.org/abs/2503.00938)!
 * [2025.03.03] 🔥 Official codes has released!
@@ -74,6 +75,33 @@ compute distance matrix or post-processing like re-ranking
 from NFC import NFC
 feats = NFC(feats, k1 = 2, k2 = 2)
 ```
+
+## Demo for TransReID on Market1501 dataset
+0. Follow the official instructions of [TransReID](https://github.com/damo-cv/TransReID) to install the environment, and run their test script. If it succeeds, then ours are the same.
+<!-- TransReID-main\configs\Market\vit_transreid_stride.yml -->
+1. Modify configuration file `configs/Market/vit_transreid_stride.yml`. Wether use NFC or IPG feature centralization ot not.
+    ```yaml
+    TEST:
+        NFC: True
+        IPG: True
+    ```
+2. If want to test IPG feature centralization performance, Download the generated images ([Gallery](https://drive.google.com/file/d/1QdH0CctiUrZTCE3nPzc_kPmgAaxhhWzd/view?usp=sharing) & [Query](https://drive.google.com/file/d/1oiOutY64FQn9RTF2l_T0A8iPCWMkJi3a/view?usp=sharing)) and put them in Market1501 folder. The folder structure should be like:
+    ```shell
+    Market1501
+    ├── bounding_box_test       # original gallery images
+    ├── bounding_box_test_gen   # generated gallery images
+    ├── bounding_box_train      # original training images
+    ├── query                   # original query images
+    └── query_gen               # generated query images
+    ```
+3. Run the test script.
+    Use their official pretrained model or use our pretrained model (without camera ID) on [HuggingFace](https://huggingface.co/yuanc3/Pose2ID) (`transformer_20.pth`). If use the model w/o camera ID, please set ```camera_num``` in  Line45 of ```test.py``` to 0. 
+    ```bash
+    cd demo/TransReID # The same with the official repository
+    python test.py --config_file configs/Market/vit_transreid_stride.yml MODEL.DEVICE_ID "('0')"  TEST.WEIGHT 'path/to/your/pretrained/model'
+    ```
+
+```NOTE:``` If all goes well, you can get the **same** results of the first two rows in Table.1.
 
 ## 📊 Experiments
 
