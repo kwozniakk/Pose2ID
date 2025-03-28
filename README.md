@@ -17,12 +17,16 @@ Beihang University
 <div align='center'>
     <a href='https://arxiv.org/abs/2503.00938'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>
     <a href='https://huggingface.co/yuanc3/Pose2ID'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20HuggingFace-Model-yellow'></a>
-</div>
 
+
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/from-poses-to-identity-training-free-person/person-re-identification-on-market-1501)](https://paperswithcode.com/sota/person-re-identification-on-market-1501?p=from-poses-to-identity-training-free-person)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/from-poses-to-identity-training-free-person/person-re-identification-on-occluded-reid-1)](https://paperswithcode.com/sota/person-re-identification-on-occluded-reid-1?p=from-poses-to-identity-training-free-person)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/from-poses-to-identity-training-free-person/cross-modal-person-re-identification-on-sysu)](https://paperswithcode.com/sota/cross-modal-person-re-identification-on-sysu?p=from-poses-to-identity-training-free-person)
+</div>
 
 <p align="center"><i>🔥 A very <b>simple</b> but <b>efficient</b> framework for <b>ReID</b> tasks/models. 🔥</i></p>
 
-
+<p align="center"><i>🔥 A powerful <b>pedestrian generation model (IPG)</b> across <b>rgb</b>, <b>infrared</b>, and <b>occlusion</b> scenes. 🔥</i></p>
 
 
 ![Image](figs/visualization.png "Generated Images with our IPG model")
@@ -211,9 +215,7 @@ Here, we provide our generated images on [Gallery](https://drive.google.com/file
 
 
 ### Getting target poses 
-We use [DWpose](https://github.com/IDEA-Research/DWPose) to get poses with 18 keypoints.Please follow their official instructions.
-
-
+We use [DWpose](https://github.com/IDEA-Research/DWPose) to get poses with 18 keypoints.Please follow their official instructions. You may also use other pose estimation methods to get the 18 keypoints poses.
 
 
 ## 📝 Release Plans
@@ -230,5 +232,10 @@ We use [DWpose](https://github.com/IDEA-Research/DWPose) to get poses with 18 ke
 If you find our work useful for your research, please consider citing the paper:
 
 ```bash
-
+@article{yuan2025poses,
+  title={From Poses to Identity: Training-Free Person Re-Identification via Feature Centralization},
+  author={Yuan, Chao and Zhang, Guiwei and Ma, Changxiao and Zhang, Tianyi and Niu, Guanglin},
+  journal={arXiv preprint arXiv:2503.00938},
+  year={2025}
+}
 ``` -->
