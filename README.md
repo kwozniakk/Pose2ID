@@ -83,7 +83,7 @@ feats = NFC(feats, k1 = 2, k2 = 2)
 ## Demo for TransReID on Market1501 dataset
 0. Follow the official instructions of [TransReID](https://github.com/damo-cv/TransReID) to install the environment, and run their test script. If it succeeds, then ours are the same.
 <!-- TransReID-main\configs\Market\vit_transreid_stride.yml -->
-1. Modify configuration file `configs/Market/vit_transreid_stride.yml`. Wether use NFC or IPG feature centralization ot not.
+1. Modify configuration file `configs/Market/vit_transreid_stride.yml`. Wether use NFC or IPG feature centralization or not.
     ```yaml
     TEST:
         NFC: True
@@ -227,10 +227,20 @@ We use [DWpose](https://github.com/IDEA-Research/DWPose) to get poses with 18 ke
 |    🚀    | IPG model with modality transfer ability (RGB2IR)      | TBD |
 |    🚀    | Video-IPG model      | TBD |
 
-<!-- ## 📒 Citation
+## 📒 Citation
 
 If you find our work useful for your research, please consider citing the paper:
 
+```bash
+@inproceedings{yuan2025poses,
+  title={From poses to identity: Training-free person re-identification via feature centralization},
+  author={Yuan, Chao and Zhang, Guiwei and Ma, Changxiao and Zhang, Tianyi and Niu, Guanglin},
+  booktitle={Proceedings of the Computer Vision and Pattern Recognition Conference},
+  pages={24409--24418},
+  year={2025}
+}
+```
+or
 ```bash
 @article{yuan2025poses,
   title={From Poses to Identity: Training-Free Person Re-Identification via Feature Centralization},
@@ -238,4 +248,4 @@ If you find our work useful for your research, please consider citing the paper:
   journal={arXiv preprint arXiv:2503.00938},
   year={2025}
 }
-``` -->
+```
