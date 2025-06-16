@@ -11,8 +11,8 @@ opencv_contrib_python==4.8.1.78
 opencv_python==4.8.1.78
 Pillow==11.1.0
 safetensors==0.5.3
-torch==2.0.1
-torchvision==0.15.2
+torch
+torchvision
 tqdm==4.66.1
 transformers==4.30.2
 xformers==0.0.22
