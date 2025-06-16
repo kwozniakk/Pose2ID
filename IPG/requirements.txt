@@ -3,7 +3,7 @@ av==11.0.0
 diffusers==0.24.0
 einops==0.4.1
 matplotlib==3.10.1
-mlflow==2.9.2
+mlflow
 numpy==2.2.3
 omegaconf==2.2.3
 onnxruntime_gpu
