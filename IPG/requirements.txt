@@ -4,7 +4,7 @@ diffusers
 einops
 matplotlib
 mlflow
-numpy==2.2.3
+numpy
 omegaconf
 onnxruntime_gpu
 opencv_contrib_python
