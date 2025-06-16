@@ -209,6 +209,53 @@ python inference.py --ckpt_dir pretrained --pose_dir standard_poses --ref_dir re
 `--ref_dir`: directory of reference images (we provide 10 reference imgs), \
 `--out_dir`: directory of output images.
 
+### Tracking with Ultralytics
+We provide a lightweight adapter for the [Ultralytics](https://github.com/ultralytics/ultralytics) tracker. The adapter converts tracking results to a format that can be fed into the existing Pose2ID pipeline.
+Make sure you have the following Python packages installed:
+
+- `Pillow`
+- `ultralytics` (includes OpenCV for video processing; omit if using `mock=True`)
+- `huggingface_hub` (optional, auto-downloads Pose2ID weights)
+
+```python
+from run_pose2id_with_ultralytics import main as run
+
+run(
+    "video.mp4",
+    "yolov8n.pt",
+    ckpt_dir="pretrained",
+    pose_dir="standard_poses",
+    out_dir="output",
+    config="configs/inference.yaml",
+)
+```
+
+You can also pass a remote URL for the video. The helper will download it
+automatically:
+
+```python
+run(
+    "https://raw.githubusercontent.com/opencv/opencv/master/samples/data/vtest.avi",
+    "yolov8n.pt",
+)
+```
+
+If the weights in `ckpt_dir` are missing, the script tries to download them
+from HuggingFace using `huggingface_hub`.
+
+If you don't have the Ultralytics dependency installed, you can generate random
+tracking data instead:
+
+```python
+run(
+    "dummy.mp4",
+    "yolov8n.pt",
+    mock=True,
+)
+```
+
+The helper function `results_to_pose2id_inputs` in `ultralytics_tracker_adapter.py` extracts bounding boxes and IDs from YOLO tracking results. The example script crops the first detection for each track and then runs the full Pose2ID inference pipeline on the cropped images.
+
 
 ### Official generated images on Market1501 
 Here, we provide our generated images on [Gallery](https://drive.google.com/file/d/1QdH0CctiUrZTCE3nPzc_kPmgAaxhhWzd/view?usp=sharing) and [Query](https://drive.google.com/file/d/1oiOutY64FQn9RTF2l_T0A8iPCWMkJi3a/view?usp=sharing) of test set on Market1501 with our 8 representative poses. 
